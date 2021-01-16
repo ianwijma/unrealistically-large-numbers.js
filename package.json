@@ -14,5 +14,8 @@
   "bugs": {
     "url": "https://github.com/ianwijma/unrealistically-large-numbers.js/issues"
   },
-  "homepage": "https://github.com/ianwijma/unrealistically-large-numbers.js#readme"
+  "homepage": "https://github.com/ianwijma/unrealistically-large-numbers.js#readme",
+  "dependencies": {
+    "decimal.js": "^10.2.1"
+  }
 }
