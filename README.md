@@ -45,7 +45,7 @@ As you can see they can be quite random from time to time,
 but luckily the page also have some handy unit chart with 1 till 9, for units, tens and hundreds. 
 Which makes making a system easier.  
 
-Here is a copy paste of the table:
+Here is a copy paste of the table I'm going to name the prefix table:
 
 |number|Units|Tens|Hundreds|
 |:---------------|:---------------|:---------------|:---------------|
@@ -59,14 +59,68 @@ Here is a copy paste of the table:
 |8|Octo|Octoginta|Octingenti|
 |9|Nove|Nonaginta|Nongenti|
 
+Now we have some sort of repetition, 
+but its still not 100% infinite.
 
-As you can see there is not really a consistency, 
-Which makes it quite hard to make it infinite. 
+However, these are mostly just prefixes, so we are missing some suffix.
 
-So now I have an idea 
+## Requirements
 
-## Design
+For numbers from 0 to 1 trillion we will just use the known names:
 
-So I needed to make a system that generates realistic looking numbers,
-But looking at the research material, there is not really a consistency.
-So I need to make my own "prefix" 
+- 1 - 999.999;
+- 1 Million - 999 Million;
+- 1 Billion - 999 Billion;
+- 1 Billiard - 999 Billiard;
+- 1 Trillion - 999 Trillion;
+ 
+After the initial known numbers, we need to switch is up to our custom system. 
+Even though there are names, I decide to make my own from here on.
+
+First we need to find some sort of suffix for our name. 
+I see `tillion` is a recurring theme. 
+
+So looking at the prefix table combined with the suffix,
+we would end up with the following sequence.
+
+- 1 un_tillion - 999 un_tilion
+- 1 duo_tillion - 999 duo_tillion
+- 1 tre_tillion - 999 tre_tillion
+- 1 quattuor_tillion - 999 quattuor_tillion
+
+Now this looks already like some believable word for numbers if you ask me.
+The only issue if we get to the end of the prefixes.
+
+But I already have a plan for that, to make it infinite, 
+we are just going to start over again with the first prefix.
+
+- 1 nongenti_tillion - 999 nongenti_tillion
+- 1 un_nongenti_tillion - 999 un_nongenti_tillion 
+
+As you see with the last item, we started with the first prefix again.
+This way we can make it infinite. 
+
+## Number
+
+The number which you see in front of the name is going to be a float,
+with max 3 numbers behind the comma.
+With the main reason being that ADventure Capitalist also handles its numbers this way.
+
+This also it allows for enough precision for our use-case, again, This is not for precision use.
+
+## Maths
+
+Just having large number doesn't allow you for much without some maths.
+
+Initially we just want to have some basic maths like add, remove, division and multiplication,
+but most likely add more methods to do maths with. 
+
+## Functional and Object oriented programming
+
+Because I want this library to work for both use cases, I will make the library support both functional and object oriented programming.
+
+This is done by programming the internals of the framework in a functional way. 
+Where the default export is a class that is for object oriented programmers, 
+and the internal functions are exposed for functional programming.
+
+This also allows easy testing of the different functions.  
